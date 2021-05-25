@@ -17,7 +17,5 @@ Pod::Spec.new do |s|
   s.dependency       "JKVValue", "~> 1.3"
   s.dependency       "CocoaAsyncSocket", "~> 7.6"
 
-  s.info_plist = {
-    'CFBundleIdentifier' => 'io.pivotal.RMQClient'
-  }
+  s.pod_target_xcconfig = { 'PRODUCT_BUNDLE_IDENTIFIER': 'io.pivotal.RMQClient' }
 end
