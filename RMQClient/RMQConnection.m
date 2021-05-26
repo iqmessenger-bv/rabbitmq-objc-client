@@ -86,6 +86,13 @@
 @property (nonatomic, readwrite) NSNumber *handshakeTimeout;
 @end
 
+NSNumber* RMQDefaultHeartbeatTimeout;
+NSNumber* RMQDefaultConnectTimeout;
+NSNumber* RMQDefaultReadTimeout;
+NSNumber* RMQDefaultWriteTimeout;
+NSNumber* RMQDefaultSyncTimeout;
+NSNumber* RMQDefaultRecoveryInterval;
+
 __attribute__((constructor))
 static void RMQInitConnectionConfigDefaults() {
     RMQDefaultHeartbeatTimeout = [NSNumber numberWithInteger:60];
