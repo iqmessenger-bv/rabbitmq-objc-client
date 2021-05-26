@@ -83,23 +83,6 @@
                             waiterFactory:(nonnull id<RMQWaiterFactory>)waiterFactory
                           heartbeatSender:(nonnull id<RMQHeartbeatSender>)heartbeatSender;
 
-/// @brief Connection tuning, customisable TLS, customisable config, all recovery options.
-- (nonnull instancetype)initWithUri:(NSString *)uri
-                         tlsOptions:(RMQTLSOptions *)tlsOptions
-         userProvidedConnectionName:(NSString *)connectionName
-                         channelMax:(nonnull NSNumber *)channelMax
-                           frameMax:(nonnull NSNumber *)frameMax
-                          heartbeat:(nonnull NSNumber *)heartbeat
-                     connectTimeout:(nonnull NSNumber*)connectTimeout
-                        readTimeout:(nonnull NSNumber*)readTimeout
-                       writeTimeout:(nonnull NSNumber*)writeTimeout
-                        syncTimeout:(nonnull NSNumber *)syncTimeout
-                           delegate:(id<RMQConnectionDelegate>)delegate
-                      delegateQueue:(dispatch_queue_t)delegateQueue
-                       recoverAfter:(nonnull NSNumber *)recoveryInterval
-                   recoveryAttempts:(nonnull NSNumber *)recoveryAttempts
-         recoverFromConnectionClose:(BOOL)shouldRecoverFromConnectionClose;
-
 /// @brief Connection tuning, customisable config, all recovery options.
 - (nonnull instancetype)initWithUri:(nonnull NSString *)uri
          userProvidedConnectionName:(nonnull NSString *)connectionName
