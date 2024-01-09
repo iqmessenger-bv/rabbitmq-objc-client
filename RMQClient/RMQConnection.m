@@ -751,7 +751,7 @@ static void RMQInitConnectionConfigDefaults() {
 
 - (RMQConnectionUpdateSecret *)methodForUpdateSecret:(NSString *)secret {
     RMQLongstr *secretLongstr = [[RMQLongstr alloc] init:secret];
-    RMQShortstr *reason = [[RMQLongstr alloc] init:@"ObjC client needs it"];
+    RMQShortstr *reason = [[RMQShortstr alloc] init:@"ObjC client needs it"];
     return [[RMQConnectionUpdateSecret alloc] initWithSecret:secretLongstr
                                                       reason:reason];
 }
