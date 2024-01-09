@@ -622,6 +622,13 @@ static void RMQInitConnectionConfigDefaults() {
     return ch;
 }
 
+- (void)updateSecret:(NSString *)secret
+{
+    [self.commandQueue enqueue:^{
+        [self sendFrameset:[[RMQFrameset alloc] initWithChannelNumber:@0 method:[self methodForUpdateSecret:secret]]];
+    }];
+}
+
 - (BOOL)hasCompletedHandshake {
     return self.handshakeComplete;
 }
@@ -747,6 +754,13 @@ static void RMQInitConnectionConfigDefaults() {
                                                replyText:[[RMQShortstr alloc] init:@"Goodbye"]
                                                  classId:[[RMQShort alloc] init:0]
                                                 methodId:[[RMQShort alloc] init:0]];
+}
+
+- (RMQConnectionUpdateSecret *)methodForUpdateSecret:(NSString *)secret {
+    RMQLongstr *secretLongstr = [[RMQLongstr alloc] init:secret];
+    RMQShortstr *reason = [[RMQShortstr alloc] init:@"ObjC client needs it"];
+    return [[RMQConnectionUpdateSecret alloc] initWithSecret:secretLongstr
+                                                      reason:reason];
 }
 
 - (id<RMQConnectionRecovery>)recovery {
